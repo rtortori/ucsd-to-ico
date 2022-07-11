@@ -1,0 +1,1801 @@
+[
+    {
+        "Body":
+        {
+            "ClassId": "workflow.CustomDataTypeDefinition",
+            "CompositeType": true,
+            "Description": "This data type takes holds information about a formatted string.",
+            "Label": "Formatted Text",
+            "Name": "FormattedText",
+            "ObjectType": "workflow.CustomDataTypeDefinition",
+            "ParameterSet":
+            [],
+            "Properties":
+            {
+                "ObjectType": "workflow.CustomDataTypeProperties"
+            },
+            "SharedScope": "shared",
+            "TypeDefinition":
+            [
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The content type of the request. Currently supports JSON and Text.\n",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Content Type",
+                    "Name": "ContentType",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [
+                                {
+                                    "Label": "JSON",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "json"
+                                },
+                                {
+                                    "Label": "Text",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "text"
+                                }
+                            ],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "enum"
+                    },
+                    "Required": true
+                },
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The content of the formatted text that can spawn multiple lines.",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Text",
+                    "Name": "Text",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "string"
+                    },
+                    "Required": true
+                }
+            ]
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/CustomDataTypeDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.CustomDataTypeDefinition",
+            "Description": "The types of values that can be extracted from API responses in IO Generic API tasks.",
+            "Label": "Response Parameter Type",
+            "Name": "ResponseParameterTypeEnum",
+            "ObjectType": "workflow.CustomDataTypeDefinition",
+            "ParameterSet":
+            [],
+            "Properties":
+            {
+                "ObjectType": "workflow.CustomDataTypeProperties"
+            },
+            "SharedScope": "shared",
+            "TypeDefinition":
+            [
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The types of values that can be extracted from API responses in IO Generic API tasks. The JSON type can be used to extract any type of value from response as a parameter.",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Parameter Type",
+                    "Name": "ParameterType",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [
+                                {
+                                    "Label": "String",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "string"
+                                },
+                                {
+                                    "Label": "Integer",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "integer"
+                                },
+                                {
+                                    "Label": "Float",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "float"
+                                },
+                                {
+                                    "Label": "Boolean",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "boolean"
+                                },
+                                {
+                                    "Label": "JSON",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "json"
+                                }
+                            ],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "enum"
+                    },
+                    "Required": true
+                }
+            ]
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/CustomDataTypeDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.CustomDataTypeDefinition",
+            "CompositeType": true,
+            "Description": "This data type takes information about a parameter that needs to be extracted from an API response in Generic API tasks.",
+            "Label": "Response Parameter",
+            "Name": "ResponseParameter",
+            "ObjectType": "workflow.CustomDataTypeDefinition",
+            "ParameterSet":
+            [],
+            "Properties":
+            {
+                "ObjectType": "workflow.CustomDataTypeProperties"
+            },
+            "SharedScope": "shared",
+            "TypeDefinition":
+            [
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The content specific path information that identifies the parameter value within the content. The value is usually a XPath or JSONPath or a regular expression in case of text content.",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Path",
+                    "Name": "Path",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "string"
+                    },
+                    "Required": true
+                },
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "Name of the response parameter.",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Name",
+                    "Name": "Name",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "string"
+                    },
+                    "Required": true
+                },
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The response parameter type - will be one of string, integer, float, boolean, complex or collection. If the type is not specified, parameter will be considered of string type by default.",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Type",
+                    "Name": "Type",
+                    "ObjectType": "workflow.CustomDataType",
+                    "Properties":
+                    {
+                        "CatalogMoid": "shared",
+                        "CustomDataTypeName": "ResponseParameterTypeEnum",
+                        "ObjectType": "workflow.CustomDataProperty"
+                    }
+                }
+            ]
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/CustomDataTypeDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.CustomDataTypeDefinition",
+            "CompositeType": true,
+            "Description": "Response parser framework supports extraction of required values from API/device responses. These responses may be of various content types such as XML, JSON, etc. The values of importance are modeled as parameters in the response parser framework.\nThe parameters can be of a scalar value type or a collection of values. A group of related parameters can be modeled as a single complex type parameter. These complex types will be very useful to extract a set of repeating group of related parameters.\nA response parser specification defines the set of parameters that need to be extracted from the content. The response parser specification allows complex type definitions to be defined for any complex parameters.",
+            "Label": "Response Parser",
+            "Name": "ResponseParserType",
+            "ObjectType": "workflow.CustomDataTypeDefinition",
+            "ParameterSet":
+            [],
+            "Properties":
+            {
+                "ObjectType": "workflow.CustomDataTypeProperties"
+            },
+            "SharedScope": "shared",
+            "TypeDefinition":
+            [
+                {
+                    "ArrayItemType":
+                    {
+                        "ObjectType": "workflow.CustomArrayItem",
+                        "Properties":
+                        {
+                            "CatalogMoid": "shared",
+                            "CustomDataTypeName": "ResponseParameter",
+                            "ObjectType": "workflow.CustomDataProperty"
+                        }
+                    },
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The collection of parameters that need to be extracted from the API response.\n",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Parameters",
+                    "Max": 10,
+                    "Min": 1,
+                    "Name": "Parameters",
+                    "ObjectType": "workflow.ArrayDataType"
+                }
+            ]
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/CustomDataTypeDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.CustomDataTypeDefinition",
+            "Description": "The outcome type specifies status of the task to be set when the outcome condition evaluates to true.",
+            "Label": "Outcome Type Enum",
+            "Name": "OutcomeTypeEnum",
+            "ObjectType": "workflow.CustomDataTypeDefinition",
+            "ParameterSet":
+            [],
+            "Properties":
+            {
+                "ObjectType": "workflow.CustomDataTypeProperties"
+            },
+            "SharedScope": "shared",
+            "TypeDefinition":
+            [
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The outcome type specifies status of the task to be set when the outcome condition evaluates to true.",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Outcome Type",
+                    "Name": "OutcomeType",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [
+                                {
+                                    "Label": "Success",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "Success"
+                                },
+                                {
+                                    "Label": "Error",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "Error"
+                                },
+                                {
+                                    "Label": "Skip Task Execution",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "SkipTaskExecution"
+                                },
+                                {
+                                    "Label": "Terminal Error",
+                                    "ObjectType": "workflow.EnumEntry",
+                                    "Value": "TerminalError"
+                                }
+                            ],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "enum"
+                    },
+                    "Required": true
+                }
+            ]
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/CustomDataTypeDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.CustomDataTypeDefinition",
+            "CompositeType": true,
+            "Description": "Intersight Orchestrator allows the users to specify the different API outcomes.\nThe task status message for an outcome can be specified. An outcome can be qualified as recoverable/non-recoverable error condition.",
+            "Label": "Outcome",
+            "Name": "Outcome",
+            "ObjectType": "workflow.CustomDataTypeDefinition",
+            "ParameterSet":
+            [],
+            "Properties":
+            {
+                "ObjectType": "workflow.CustomDataTypeProperties"
+            },
+            "SharedScope": "shared",
+            "TypeDefinition":
+            [
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The user friendly name given to the task outcome.\n",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Name",
+                    "Name": "Name",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "string"
+                    },
+                    "Required": true
+                },
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The condition expression that uses a golang template logical expression to mark this outcome when the condition evaluates to true for the task execution.\nThe condition can refer outputs extracted via the response parser. The format to refer the captured output is {{.local.response.<captured-parameter-name>}}.\nLets say we have defined 'Name' in the response parser specification and in the condition we want to check if the extracted output 'Name' equals to string value 'Test', condition looks like - {{eq .local.response.Name \"Test\"}}. Make sure to enclose the value within double quotes if it is of string datatype.\n",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Condition",
+                    "Name": "Condition",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "string"
+                    },
+                    "Required": true
+                },
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The message to be shown when the outcome specified by condition occurs. Message can have references to the response\nparser captured output.\n",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Message",
+                    "Name": "Message",
+                    "ObjectType": "workflow.PrimitiveDataType",
+                    "Properties":
+                    {
+                        "Constraints":
+                        {
+                            "EnumList":
+                            [],
+                            "ObjectType": "workflow.Constraints"
+                        },
+                        "InventorySelector":
+                        [],
+                        "ObjectType": "workflow.PrimitiveDataProperty",
+                        "Type": "string"
+                    }
+                },
+                {
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The outcome type based on which task status is updated accordingly. Following outcome types are defined. 1. Success              - Indicates that the outcome is a success and task execution status is marked as 'success'.\n2. Error                - Indicates that the outcome is an error and task execution status is marked as 'failed'.\n3. Skip Task Execution  - Indicates that the task needs to be skipped based on the condition specified and\n                          mark the execution status as 'NO_OP'.\n",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "Type of the outcome",
+                    "Name": "Type",
+                    "ObjectType": "workflow.CustomDataType",
+                    "Properties":
+                    {
+                        "CatalogMoid": "shared",
+                        "CustomDataTypeName": "OutcomeTypeEnum",
+                        "ObjectType": "workflow.CustomDataProperty"
+                    }
+                }
+            ]
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/CustomDataTypeDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.TaskDefinition",
+            "Description": "Invokes the given Web API against the given endpoint. The endpoint can be Intersight API or an external endpoint added as Target in Intersight. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked.\n",
+            "Label": "Invoke Web API Request",
+            "Name": "InvokeGenericWebApi",
+            "ObjectType": "workflow.TaskDefinition",
+            "Properties":
+            {
+                "ExternalMeta": true,
+                "InputDefinition":
+                [
+                    {
+                        "CustomDataTypeProperties":
+                        {
+                            "CatalogMoid": "shared",
+                            "ObjectType": "workflow.CustomDataProperty"
+                        },
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The API call can be made to Intersight or an external endpoint added as Target. Target should be in claimed or connected state. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked. An empty value for this input indicates that the API call is made to Intersight.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "External Target",
+                        "Name": "Target",
+                        "ObjectType": "workflow.TargetDataType",
+                        "Properties":
+                        [
+                            {
+                                "DisplayAttributes":
+                                [
+                                    "Name",
+                                    "TargetType"
+                                ],
+                                "ObjectType": "workflow.TargetProperty",
+                                "Selector": "/api/v1/asset/Targets?$filter=((TargetType eq HTTPEndpoint and Status eq Claimed) or ((TargetType eq PureStorageFlashArray or TargetType eq HitachiVirtualStoragePlatform or TargetType eq NetAppActiveIqUnifiedManager or TargetType eq TerraformCloud or TargetType eq VmwareVcenter or TargetType eq APIC) and Status eq Connected))",
+                                "SelectorProperty":
+                                {
+                                    "Method": "GET",
+                                    "ObjectType": "workflow.SelectorProperty"
+                                },
+                                "SupportedObjects":
+                                [
+                                    "asset.Target"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "HTTP protocol to be used - HTTP, HTTPS. Populated implicitly by fetching the value from target task input if API endpoint is added as target within Intersight. Default value of HTTPS is set if not specified in other scenarios.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Protocol",
+                        "Name": "Protocol",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [
+                                    {
+                                        "Label": "HTTP",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "http"
+                                    },
+                                    {
+                                        "Label": "HTTPS",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "https"
+                                    }
+                                ],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "enum"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "HTTP method to be requested on the given URL. If the value is not given, GET is used as default.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Method",
+                        "Name": "Method",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [
+                                    {
+                                        "Label": "GET",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "GET"
+                                    },
+                                    {
+                                        "Label": "HEAD",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "HEAD"
+                                    },
+                                    {
+                                        "Label": "POST",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "POST"
+                                    },
+                                    {
+                                        "Label": "PUT",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "PUT"
+                                    },
+                                    {
+                                        "Label": "PATCH",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "PATCH"
+                                    },
+                                    {
+                                        "Label": "DELETE",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "DELETE"
+                                    },
+                                    {
+                                        "Label": "OPTIONS",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "OPTIONS"
+                                    }
+                                ],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "enum"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "Relative URL for Intersight, Device Registration and Target APIs. Does not support specifying fully qualified URL.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "URL",
+                        "Name": "Url",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "string"
+                        },
+                        "Required": true
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The request headers that need to be sent in the request in key value pairs list.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Headers",
+                        "Name": "Headers",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "json"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The key value pairs given in this input will be sent in HTTP 'Cookie' header.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Cookies",
+                        "Name": "Cookies",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "json"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The type of the response. Currently supports JSON.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Response Type",
+                        "Name": "ContentType",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [
+                                    {
+                                        "Label": "JSON",
+                                        "ObjectType": "workflow.EnumEntry",
+                                        "Value": "json"
+                                    }
+                                ],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "enum"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The optional request body that is sent as part of this API request. The request body can contain golang templates that can be populated with task input parameters and previous API output parameters.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Body",
+                        "Name": "Body",
+                        "ObjectType": "workflow.CustomDataType",
+                        "Properties":
+                        {
+                            "CatalogMoid": "shared",
+                            "CustomDataTypeName": "FormattedText",
+                            "ObjectType": "workflow.CustomDataProperty"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The structure of the response parser shall provide the list of values that need to be extracted from the API response.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Response Parser",
+                        "Name": "ResponseParser",
+                        "ObjectType": "workflow.CustomDataType",
+                        "Properties":
+                        {
+                            "CatalogMoid": "shared",
+                            "CustomDataTypeName": "ResponseParserType",
+                            "ObjectType": "workflow.CustomDataProperty"
+                        }
+                    },
+                    {
+                        "ArrayItemType":
+                        {
+                            "ObjectType": "workflow.CustomArrayItem",
+                            "Properties":
+                            {
+                                "CatalogMoid": "shared",
+                                "CustomDataTypeName": "Outcome",
+                                "ObjectType": "workflow.CustomDataProperty"
+                            }
+                        },
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "Allows to capture the possible outcomes of this API. This is a collection of outcomes which gets evaluated in the order they are given. If an outcome condition evaluates to 'true', status of the task can be set to one of the supported types - Success, Error or no operation and also an optional task execution message can be set.\nAt the end of the outcomes list, a catchall success/fail outcome can be added with condition explicitly set as 'true'. This allows to mark the status of task execution either success or failure when none of the previous outcomes match.\nWhen no outcomes is specified, default behaviour is to mark the API execution status 'success' if obtained HTTP status code is 2xx else mark it as 'failed'.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Outcomes",
+                        "Max": 10,
+                        "Name": "Outcomes",
+                        "ObjectType": "workflow.ArrayDataType"
+                    }
+                ],
+                "ObjectType": "workflow.Properties",
+                "OutputDefinition":
+                [
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The response headers that are extracted from the API response.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Headers",
+                        "Name": "Headers",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "json"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The list of cookies obtained from the response in the form of key value pairs.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Cookies",
+                        "Name": "Cookies",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "json"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The HTTP status code of the Web API response.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Status Code",
+                        "Name": "StatusCode",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "integer"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The HTTP status message of the Web API response.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Status Message",
+                        "Name": "StatusMessage",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "string"
+                        }
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The list of output parameters extracted from the response.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Parameters",
+                        "Name": "Parameters",
+                        "ObjectType": "workflow.PrimitiveDataType",
+   
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "json"
+                        }
+                    }
+                ],
+                "RetryDelay": 60,
+                "RetryPolicy": "Fixed",
+                "SupportStatus": "Supported",
+                "Timeout": 120,
+                "TimeoutPolicy": "Timeout"
+            },
+            "RollbackTasks":
+            [],
+            "SharedScope": "shared",
+            "Tags":
+            [
+                {
+                    "Key": "category",
+                    "Value": "Executors"
+                }
+            ],
+            "Version": 1
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/TaskDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.TaskDefinition",
+            "DefaultVersion": true,
+            "Description": "Pauses the current workflow for the specified duration.",
+            "Label": "Sleep Task",
+            "Name": "InvokeSleepTask",
+            "ObjectType": "workflow.TaskDefinition",
+            "Properties":
+            {
+                "ExternalMeta": true,
+                "InputDefinition":
+                [
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Sleep Time in Seconds",
+                        "Name": "SleepTimeInSec",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "Max": 600,
+                                "Min": 1,
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "integer"
+                        },
+                        "Required": true
+                    }
+                ],
+                "ObjectType": "workflow.Properties",
+                "OutputDefinition":
+                [],
+                "RetryCount": 3,
+                "RetryDelay": 60,
+                "RetryPolicy": "Fixed",
+                "SupportStatus": "Supported",
+                "Timeout": 600,
+                "TimeoutPolicy": "Timeout"
+            },
+            "RollbackTasks":
+            [],
+            "SharedScope": "shared",
+            "Tags":
+            [
+                {
+                    "Key": "category",
+                    "Value": "CoreTasks"
+                }
+            ],
+            "Version": 1
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/TaskDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.TaskDefinition",
+            "DefaultVersion": true,
+            "Description": "Rollback an UCSD Service Request",
+            "Label": "Rollback UCSD Request",
+            "Name": "RollbackUCSDRequest",
+            "ObjectType": "workflow.TaskDefinition",
+            "Properties":
+            {
+                "ExternalMeta": true,
+                "InputDefinition":
+                [
+                    {
+                        "CustomDataTypeProperties":
+                        {
+                            "CatalogMoid": "shared",
+                            "ObjectType": "workflow.CustomDataProperty"
+                        },
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The API call can be made to Intersight or an external endpoint added as Target. Target should be in claimed or connected state. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked. An empty value for this input indicates that the API call is made to Intersight.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "External Target",
+                        "Name": "Target",
+                        "ObjectType": "workflow.TargetDataType",
+                        "Properties":
+                        [
+                            {
+                                "DisplayAttributes":
+                                [
+                                    "Name",
+                                    "TargetType"
+                                ],
+                                "ObjectType": "workflow.TargetProperty",
+                                "Selector": "/api/v1/asset/Targets?$filter=(TargetType eq UCSD and Status eq Connected)",
+                                "SelectorProperty":
+                                {
+                                    "Method": "GET",
+                                    "ObjectType": "workflow.SelectorProperty"
+                                },
+                                "SupportedObjects":
+                                [
+                                    "asset.Target"
+                                ]
+                            }
+                        ],
+                        "Required": true
+                    },
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Service Request",
+                        "Name": "ServiceRequest",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "string"
+                        },
+                        "Required": true
+                    }
+                ],
+                "ObjectType": "workflow.Properties",
+                "OutputDefinition":
+                [],
+                "RetryCount": 3,
+                "RetryDelay": 60,
+                "RetryPolicy": "Fixed",
+                "SupportStatus": "Supported",
+                "Timeout": 600,
+                "TimeoutPolicy": "Timeout"
+            },
+            "RollbackTasks":
+            [],
+            "SharedScope": "user",
+            "Version": 1
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/TaskDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.TaskDefinition",
+            "DefaultVersion": true,
+            "Description": "Invokes the WFDISPLNAME Workflow from UCS Director",
+            "Label": "WFDISPLNAME",
+            "Name": "WFREFNAME",
+            "ObjectType": "workflow.TaskDefinition",
+            "Properties":
+            {
+                "ExternalMeta": true,
+                "InputDefinition":
+                [
+                    {
+                        "CustomDataTypeProperties":
+                        {
+                            "CatalogMoid": "shared",
+                            "ObjectType": "workflow.CustomDataProperty"
+                        },
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "Description": "The API call can be made to Intersight or an external endpoint added as Target. Target should be in claimed or connected state. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked. An empty value for this input indicates that the API call is made to Intersight.\n",
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "External Target",
+                        "Name": "Target",
+                        "ObjectType": "workflow.TargetDataType",
+                        "Properties":
+                        [
+                            {
+                                "DisplayAttributes":
+                                [
+                                    "Name",
+                                    "TargetType"
+                                ],
+                                "ObjectType": "workflow.TargetProperty",
+                                "Selector": "/api/v1/asset/Targets?$filter=(TargetType eq UCSD and Status eq Connected)",
+                                "SelectorProperty":
+                                {
+                                    "Method": "GET",
+                                    "ObjectType": "workflow.SelectorProperty"
+                                },
+                                "SupportedObjects":
+                                [
+                                    "asset.Target"
+                                ]
+                            }
+                        ],
+                        "Required": true
+                    }
+                ],
+                "ObjectType": "workflow.Properties",
+                "OutputDefinition":
+                [
+                    {
+                        "Default":
+                        {
+                            "ObjectType": "workflow.DefaultValue"
+                        },
+                        "DisplayMeta":
+                        {
+                            "InventorySelector": true,
+                            "ObjectType": "workflow.DisplayMeta",
+                            "WidgetType": "None"
+                        },
+                        "Label": "Service Request",
+                        "Name": "ServiceRequest",
+                        "ObjectType": "workflow.PrimitiveDataType",
+                        "Properties":
+                        {
+                            "Constraints":
+                            {
+                                "EnumList":
+                                [],
+                                "ObjectType": "workflow.Constraints"
+                            },
+                            "InventorySelector":
+                            [],
+                            "ObjectType": "workflow.PrimitiveDataProperty",
+                            "Type": "string"
+                        }
+                    }
+                ],
+                "RetryCount": 20,
+                "RetryDelay": 30,
+                "RetryPolicy": "Fixed",
+                "SupportStatus": "Supported",
+                "Timeout": 600,
+                "TimeoutPolicy": "Timeout"
+            },
+            "RollbackTasks":
+            [
+                {
+                    "CatalogMoid": "user",
+                    "InputParameters":
+                    {
+                        "ServiceRequest": "${task.output.ServiceRequest}",
+                        "Target": "${task.input.Target}"
+                    },
+                    "Name": "RollbackUCSDRequest",
+                    "ObjectType": "workflow.RollbackTask",
+                    "Version": 1
+                }
+            ],
+            "SharedScope": "user",
+            "Tags":
+            [
+                {
+                    "Key": "category",
+                    "Value": "UCS Director Workflows"
+                }
+            ],
+            "Version": 1
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/TaskDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "ClassId": "workflow.WorkflowDefinition",
+            "DefaultVersion": true,
+            "Description": "Invokes the WFDISPLNAME workflow from UCS Director",
+            "InputDefinition":
+            [
+                {
+                    "CustomDataTypeProperties":
+                    {
+                        "CatalogMoid": "shared",
+                        "ObjectType": "workflow.CustomDataProperty"
+                    },
+                    "Default":
+                    {
+                        "ObjectType": "workflow.DefaultValue"
+                    },
+                    "Description": "The API call can be made to Intersight or an external endpoint added as Target. Target should be in claimed or connected state. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked. An empty value for this input indicates that the API call is made to Intersight.\n",
+                    "DisplayMeta":
+                    {
+                        "InventorySelector": true,
+                        "ObjectType": "workflow.DisplayMeta",
+                        "WidgetType": "None"
+                    },
+                    "Label": "UCS Director",
+                    "Name": "Target",
+                    "ObjectType": "workflow.TargetDataType",
+                    "Properties":
+                    [
+                        {
+                            "DisplayAttributes":
+                            [
+                                "Name",
+                                "TargetType"
+                            ],
+                            "ObjectType": "workflow.TargetProperty",
+                            "Selector": "/api/v1/asset/Targets?$filter=(TargetType eq UCSD and Status eq Connected)",
+                            "SelectorProperty":
+                            {
+                                "Method": "GET",
+                                "ObjectType": "workflow.SelectorProperty"
+                            }
+                        }
+                    ],
+                    "Required": true
+                }
+            ],
+            "InputParameterSet":
+            [],
+            "Label": "WFDISPLNAME",
+            "Name": "WFREFNAME",
+            "ObjectType": "workflow.WorkflowDefinition",
+            "OutputDefinition":
+            [],
+            "OutputParameters":
+            {
+            },
+            "Properties":
+            {
+                "ExternalMeta": true,
+                "ObjectType": "workflow.WorkflowProperties",
+                "Retryable": true,
+                "SupportStatus": "Supported"
+            },
+            "SharedScope": "user",
+            "Tags":
+            [
+                {
+                    "Key": "category",
+                    "Value": "UCS Director Workflows"
+                }
+            ],
+            "Tasks":
+            [
+                {
+                    "Name": "StartTask",
+                    "NextTask": "WFREFNAME1",
+                    "ObjectType": "workflow.StartTask"
+                },
+                {
+                    "Name": "SuccessEndTask",
+                    "ObjectType": "workflow.SuccessEndTask"
+                },
+                {
+                    "Name": "FailureEndTask",
+                    "ObjectType": "workflow.FailureEndTask"
+                },
+                {
+                    "Condition": "${InvokeGenericWebApi2.output.Parameters.ExecutionStatus} != 3",
+                    "Description": "A Serial Loop is a control task that runs one or more worker tasks multiple times based on a specified count or a given condition.  Either count or condition must be provided, not both.  When the loop is executed, based on count or condition, each iteration of task or a sequence of tasks inside loop run in serial.  If any of the task fail then the entire loop will fail.",
+                    "Label": "Check Service Request Status",
+                    "LoopStartTask": "InvokeGenericWebApi2",
+                    "Name": "serialLoop1",
+                    "ObjectType": "workflow.SerialLoopTask",
+                    "OnSuccess": "InvokeGenericWebApi3"
+                },
+                {
+                    "CatalogMoid": "shared",
+                    "Description": "Invokes the given Web API against the given endpoint. The endpoint can be Intersight API or an external endpoint added as Target in Intersight. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked.\n",
+                    "InputParameters":
+                    {
+                        "Headers":
+                        {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        "Method": "GET",
+                        "ResponseParser":
+                        {
+                            "Parameters":
+                            [
+                                {
+                                    "Name": "ExecutionStatus",
+                                    "Path": "$.serviceResult.executionStatus",
+                                    "Type": "json"
+                                }
+                            ]
+                        },
+                        "Target": "${workflow.input.Target}",
+                        "Url": "/app/api/rest?formatType=json&opName=userAPIGetServiceRequestWorkFlow&opData=%7Bparam0%3A{{.global.WFREFNAME1.output.ServiceRequest}}%7D"
+                    },
+                    "Label": "Check SR Status",
+                    "Name": "InvokeGenericWebApi2",
+                    "ObjectType": "workflow.WorkerTask",
+                    "OnSuccess": "InvokeSleepTask1",
+                    "TaskDefinitionName": "InvokeGenericWebApi",
+                    "Version": 2
+                },
+                {
+                    "CatalogMoid": "shared",
+                    "Description": "Pauses the current workflow for the specified duration.",
+                    "InputParameters":
+                    {
+                        "SleepTimeInSec": 10
+                    },
+                    "Label": "Sleep Task",
+                    "Name": "InvokeSleepTask1",
+                    "ObjectType": "workflow.WorkerTask",
+                    "TaskDefinitionName": "InvokeSleepTask",
+                    "Version": 1
+                },
+                {
+                    "CatalogMoid": "shared",
+                    "Description": "Invokes the given Web API against the given endpoint. The endpoint can be Intersight API or an external endpoint added as Target in Intersight. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked.\n",
+                    "InputParameters":
+                    {
+                        "Headers":
+                        {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        "Method": "GET",
+                        "Target": "${workflow.input.Target}",
+                        "Url": "/app/api/rest?formatType=json&opName=servicerequest:userAPIGetServiceRequestOutputDetails&opData=%7Bparam0%3A{{.global.WFREFNAME1.output.ServiceRequest}}%7D"
+                    },
+                    "Label": "Extract Service Request Outputs",
+                    "Name": "InvokeGenericWebApi3",
+                    "ObjectType": "workflow.WorkerTask",
+                    "OnSuccess": "SuccessEndTask",
+                    "TaskDefinitionName": "InvokeGenericWebApi",
+                    "Version": 2
+                },
+                {
+                    "CatalogMoid": "user",
+                    "InputParameters":
+                    {   "Target": "${workflow.input.Target}"
+                    },
+                    "Label": "WFDISPLNAME",
+                    "Name": "WFREFNAME1",
+                    "ObjectType": "workflow.WorkerTask",
+                    "OnSuccess": "serialLoop1",
+                    "TaskDefinitionName": "WFREFNAME",
+                    "Version": 1
+                }
+            ],
+            "UiInputFilters":
+            [],
+            "UiRenderingData":
+            {
+                "Positions":
+                [
+                    {
+                        "Name": "StartTask",
+                        "X": 656,
+                        "Y": 42
+                    },
+                    {
+                        "Name": "SuccessEndTask",
+                        "X": 656,
+                        "Y": 574
+                    },
+                    {
+                        "Name": "FailureEndTask",
+                        "X": 798,
+                        "Y": 574
+                    },
+                    {
+                        "Name": "serialLoop1",
+                        "X": 561,
+                        "Y": 208
+                    },
+                    {
+                        "Name": "InvokeGenericWebApi2",
+                        "X": 571.5,
+                        "Y": 299
+                    },
+                    {
+                        "Name": "InvokeSleepTask1",
+                        "X": 571.5,
+                        "Y": 365
+                    },
+                    {
+                        "Name": "InvokeGenericWebApi3",
+                        "X": 571,
+                        "Y": 486
+                    },
+                    {
+                        "Name": "WFREFNAME1",
+                        "X": 571,
+                        "Y": 120
+                    }
+                ]
+            },
+            "VariableDefinition":
+            [],
+            "Version": 1
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/WorkflowDefinitions",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "Batch":
+            [
+                {
+                    "Body": "{{- if index .global.task.input \"Body\" -}}\n  {{.global.task.input.Body.Text}}\n{{- end -}}",
+                    "ContentType": "{{- if index .global.task.input \"ContentType\" -}}\n  {{.global.task.input.ContentType}}\n{{- else -}}json{{- end -}}",
+                    "Cookies": "{{- if index .global.task.input \"Cookies\" -}}\n  {{.global.task.input.Cookies | ToJson}}\n{{- end -}}",
+                    "EndpointRequestType": "Internal",
+                    "Headers": "{{- if index .global.task.input \"Headers\" -}}\n  {{.global.task.input.Headers | ToJson}}\n{{- end -}}",
+                    "Method": "{{- if index .global.task.input \"Method\" -}}\n  {{.global.task.input.Method}}\n{{- else -}}GET{{- end -}}",
+                    "Name": "GenericBatchApiTask",
+                    "ObjectType": "workflow.WebApi",
+                    "Outcomes": "{{- if index .global.task.input \"Outcomes\" -}}\n  {{.global.task.input.Outcomes | ToJson}}\n{{- end -}}",
+                    "Protocol": "{{- if index .global.task.input \"Protocol\" -}}\n  {{.global.task.input.Protocol}}\n{{- else -}}https{{- end -}}",
+                    "ResponseSpec": "{{- if index .global.task.input \"ResponseParser\" -}}\n  {{.global.task.input.ResponseParser | ToJson}}\n{{- end -}}",
+                    "TargetType": "{{- if index .global.task.input \"Target\" -}}\n  Endpoint\n{{- else -}}Local{{- end -}}",
+                    "Url": "{{.global.task.input.Url}}"
+                }
+            ],
+            "CancelAction":
+            [],
+            "ClassId": "workflow.BatchApiExecutor",
+            "Constraints":
+            {
+                "ObjectType": "workflow.TaskConstraints"
+            },
+            "Description": "Generic Batch API Task",
+            "Name": "GenericBatchApiTask",
+            "ObjectType": "workflow.BatchApiExecutor",
+            "Output":
+            {
+                "Cookies": "{{- if index .global.GenericBatchApiTask.output \"HttpCookies\" -}}\n  {{.global.GenericBatchApiTask.output.HttpCookies | ToJson}}\n{{- end -}}",
+                "Headers": "{{- if index .global.GenericBatchApiTask.output \"HttpHeaders\" -}}\n  {{.global.GenericBatchApiTask.output.HttpHeaders | ToJson}}\n{{- end -}}",
+                "Parameters": "{{.global.GenericBatchApiTask.output | ToJson}}",
+                "StatusCode": "{{- if index .global.GenericBatchApiTask.output \"HttpStatusCode\" -}}\n  {{.global.GenericBatchApiTask.output.HttpStatusCode}}\n{{- end -}}",
+                "StatusMessage": "{{- if index .global.GenericBatchApiTask.output \"HttpStatusMsg\" -}}\n  {{.global.GenericBatchApiTask.output.HttpStatusMsg}}\n{{- end -}}"
+            },
+            "SharedScope": "shared",
+            "TaskDefinition":
+            {
+                "ObjectType": "workflow.TaskDefinition",
+                "Selector": "Name eq \"InvokeGenericWebApi\" and Version eq 1"
+            }
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/BatchApiExecutors",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "Batch":
+            [
+                {
+                    "ContentType": "json",
+                    "Description": "Invokes the given Web API against the given endpoint. The endpoint can be Intersight API or an external endpoint added as Target in Intersight. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked.\n",
+                    "EndpointRequestType": "Internal",
+                    "Label": "Invoke Web API Request",
+                    "Method": "POST",
+                    "Name": "InvokeGenericWebApi1",
+                    "ObjectType": "workflow.WebApi",
+                    "Outcomes":
+                    [],
+                    "ResponseSpec":
+                    {
+                        "ErrorParameters":
+                        [],
+                        "ObjectType": "content.Grammar",
+                        "Parameters":
+                        [],
+                        "Types":
+                        []
+                    },
+                    "TargetType": "Endpoint",
+                    "Url": "/app/api/rest?formatType=json&opName=userAPIRollbackServiceRequest&opData=%7Bparam0%3A{{.global.task.input.ServiceRequest}}%2Cparam1%3A%27true%27%7D"
+                }
+            ],
+            "CancelAction":
+            [],
+            "ClassId": "workflow.BatchApiExecutor",
+            "Constraints":
+            {
+                "ObjectType": "workflow.TaskConstraints"
+            },
+            "Name": "Rollback UCSD Request",
+            "ObjectType": "workflow.BatchApiExecutor",
+            "Output":
+            {},
+            "SharedScope": "user",
+            "TaskDefinition":
+            {
+                "ObjectType": "workflow.TaskDefinition",
+                "Selector": "Name eq \"RollbackUCSDRequest\" and Version eq 1"
+            }
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/BatchApiExecutors",
+        "Verb": "POST"
+    },
+    {
+        "Body":
+        {
+            "Batch":
+            [
+                {
+                    "ContentType": "json",
+                    "Description": "Invokes the given Web API against the given endpoint. The endpoint can be Intersight API or an external endpoint added as Target in Intersight. Please refer Supported Endpoints section in the Web API request end user documentation for the list of Intersight Targets on which Web API task can be invoked.\n",
+                    "EndpointRequestType": "Internal",
+                    "Headers":
+                    {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    "Label": "Execute UCSD Workflow",
+                    "Method": "POST",
+                    "Name": "InvokeGenericWebApi1",
+                    "ObjectType": "workflow.WebApi",
+                    "Outcomes":
+                    [],
+                    "ResponseSpec":
+                    {
+                        "ErrorParameters":
+                        [],
+                        "ObjectType": "content.Grammar",
+                        "Parameters":
+                        [
+                            {
+                                "AcceptSingleValue": false,
+                                "ComplexType": "",
+                                "ItemType": "simple",
+                                "Name": "ServiceRequest",
+                                "ObjectType": "content.Parameter",
+                                "Path": "$.serviceResult",
+                                "Secure": false,
+                                "Type": "string"
+                            }
+                        ],
+                        "Types":
+                        []
+                    },
+                    "TargetType": "Endpoint",
+                    "Url": ""
+                }
+            ],
+            "CancelAction":
+            [],
+            "ClassId": "workflow.BatchApiExecutor",
+            "Constraints":
+            {
+                "ObjectType": "workflow.TaskConstraints"
+            },
+            "Description": "Invokes the WFDISPLNAME Workflow from UCS Director",
+            "Name": "WFDISPLNAME",
+            "ObjectType": "workflow.BatchApiExecutor",
+            "Output":
+            {
+                "ServiceRequest": "{{.global.InvokeGenericWebApi1.output.ServiceRequest}}"
+            },
+            "SharedScope": "user",
+            "TaskDefinition":
+            {
+                "ObjectType": "workflow.TaskDefinition",
+                "Selector": "Name eq \"WFREFNAME\" and Version eq 1"
+            }
+        },
+        "ClassId": "bulk.RestSubRequest",
+        "ObjectType": "bulk.RestSubRequest",
+        "TargetMoid": "",
+        "Uri": "/v1/workflow/BatchApiExecutors",
+        "Verb": "POST"
+    }
+]
