@@ -172,4 +172,4 @@ You will now have an identical workflow in ICO with exactly the same inputs and 
 
 After a successful execution, the workflow can also be rollbacked from ICO (all UCSD tasks will be rollbacked)
 
-For additional details and open caveats/limitations check the [User Guide](./USER-GUIDE.MD)
+For additional details and open caveats/limitations check the [User Guide](./USER-GUIDE.md)
