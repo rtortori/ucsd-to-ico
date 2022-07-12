@@ -53,7 +53,8 @@ class UCSDApi():
     def ico_web_executor_url_builder(self, workflow_name, input_list):
         input_payload = ""
         for item in input_list:
-            input_payload += '{"name":"' + item + '","value":"' + '{{.global.task.input.' + item.replace(" ", "") + '}}' + '"},'
+            #input_payload += '{"name":"' + item + '","value":"' + '{{.global.task.input.' + item.replace(" ", "") + '}}' + '"},'
+            input_payload += '{"name":"' + item + '","value":"' + '{{.global.task.input.' + self.replace_non_alpha(item.replace(" ", "")) + '}}' + '"},'
         input_payload = input_payload[:-1]
         payload = '{param0:"' + workflow_name + '",param1:{"list": [' + input_payload + ']},param2: -1}'
         enc_payload = urllib.parse.quote(payload)

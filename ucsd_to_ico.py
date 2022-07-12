@@ -153,20 +153,30 @@ with open('wf_template.json', 'r') as file :
 json_template = json.loads(filedata)
 
 # Normalize Task and Workflow Names replacing non alphanumeric characters
-json_template[9]['Body']['Label'] = ucsd.replace_non_alpha(workflow_name)
+desc = "Invokes the {} Workflow from UCS Director".format(workflow_name)
+normalized_wf_name = ucsd.replace_non_alpha(workflow_name)
+normalized_wf_ref_name = ucsd.replace_non_alpha(workflow_name.replace(" ", ""))
+
+# Task Definition
+json_template[9]['Body']['Label'] = normalized_wf_name
 json_template[9]['Body']['Name'] = ucsd.replace_non_alpha(workflow_name.replace(" ", ""))
+json_template[9]['Body']['Description'] = desc
 
-json_template[10]['Body']['Label'] = ucsd.replace_non_alpha(workflow_name)
-json_template[10]['Body']['Name'] = ucsd.replace_non_alpha(workflow_name.replace(" ", ""))
+# Workflow Definition
+json_template[10]['Body']['Label'] = normalized_wf_name
+json_template[10]['Body']['Name'] = normalized_wf_ref_name
+json_template[10]['Body']['Description'] = desc
+json_template[10]['Body']['Tasks'][0]['NextTask'] = normalized_wf_ref_name + "1"
+json_template[10]['Body']['Tasks'][4]['InputParameters']['Url'] = "/app/api/rest?formatType=json&opName=userAPIGetServiceRequestWorkFlow&opData=%7Bparam0%3A{{.global." + normalized_wf_ref_name + "1.output.ServiceRequest}}%7D"
+json_template[10]['Body']['Tasks'][6]['InputParameters']['Url'] = "/app/api/rest?formatType=json&opName=servicerequest:userAPIGetServiceRequestOutputDetails&opData=%7Bparam0%3A{{.global." + normalized_wf_ref_name + "1.output.ServiceRequest}}%7D"
+json_template[10]['Body']['Tasks'][7]['Label'] = normalized_wf_name
+json_template[10]['Body']['Tasks'][7]['Name'] = normalized_wf_ref_name + "1"
+json_template[10]['Body']['Tasks'][7]['TaskDefinitionName'] = normalized_wf_ref_name
+json_template[10]['Body']['UiRenderingData']['Positions'][-1]['Name'] = normalized_wf_ref_name + "1"
+json_template[-1]['Body']['Description'] = desc
+json_template[-1]['Body']['Name'] = normalized_wf_name
+json_template[-1]['Body']['TaskDefinition']['Selector'] = "Name eq \"{}\" and Version eq 1".format(normalized_wf_ref_name)
 
-filedata = json.dumps(json_template)
-
-# Replace placeholders in the template with the correct Workflow, Task Display Names and Reference Names
-filedata = filedata.replace('WFDISPLNAME', workflow_name)
-filedata = filedata.replace('WFREFNAME', workflow_name.replace(" ", ""))
-
-# Load resulting template as dict
-json_template = json.loads(filedata)
 
 # Load TaskDefinition:InputDefinition List
 td_id_list = json_template[9]['Body']['Properties']['InputDefinition']
@@ -182,8 +192,8 @@ for index, input in enumerate(input_list):
 		"ObjectType": "workflow.DisplayMeta",
 		"WidgetType": "None"
 	},
-	"Label": "{}".format(input),
-	"Name": "{}".format(input.replace(" ", "")),
+	"Label": "{}".format(ucsd.replace_non_alpha(input)),
+	"Name": "{}".format(ucsd.replace_non_alpha(input.replace(" ", ""))),
 	"ObjectType": "workflow.PrimitiveDataType",
 	"Properties": {
 		"Constraints": {
@@ -216,8 +226,8 @@ for index, input in enumerate(input_list):
         "ObjectType": "workflow.DisplayMeta",
         "WidgetType": "None"
     },
-    "Label": "{}".format(input),
-    "Name": "{}".format(input.replace(" ", "")),
+    "Label": "{}".format(ucsd.replace_non_alpha(input)),
+    "Name": "{}".format(ucsd.replace_non_alpha(input.replace(" ", ""))),
     "ObjectType": "workflow.PrimitiveDataType",
     "Properties":
     {
@@ -254,8 +264,8 @@ for index, output in enumerate(output_list):
         "ObjectType": "workflow.DisplayMeta",
         "WidgetType": "None"
     },
-    "Label": "{}".format(output),
-    "Name": "{}".format(output.replace(" ", "")),
+    "Label": "{}".format(ucsd.replace_non_alpha(output)),
+    "Name": "{}".format(ucsd.replace_non_alpha(output.replace(" ", ""))),
     "ObjectType": "workflow.PrimitiveDataType",
     "Properties":
     {
@@ -280,7 +290,7 @@ wd_op_dict = json_template[10]['Body']['OutputParameters']
 
 # Create WorkflowDefinition:OutputParameters body
 for index, output in enumerate(output_list):
-    wd_op_dict[output.replace(" ", "")] = "${InvokeGenericWebApi3.output.Parameters." + output.replace(" ", "") + "}"
+    wd_op_dict[ucsd.replace_non_alpha(output.replace(" ", ""))] = "${InvokeGenericWebApi3.output.Parameters." + ucsd.replace_non_alpha(output.replace(" ", "")) + "}"
 
 # Set WorkflowDefinition:OutputParameters body
 json_template[10]['Body']['OutputParameters'] = wd_op_dict
@@ -295,7 +305,7 @@ if len(output_list) != 0:
     for index, output in enumerate(output_list):
         wd_rp_list.append(
             {
-            "Name": "{}".format(output.replace(" ", "")),
+            "Name": "{}".format(ucsd.replace_non_alpha(output.replace(" ", ""))),
             "Path": "$.serviceResult.workflowOutputDetails[{}].outputFieldValue".format(index),
             "Type": "string"
             }
@@ -312,13 +322,12 @@ wd_ct_im_dict = json_template[10]['Body']['Tasks'][7]['InputParameters']
 
 # Create WorkflowDefinition:CustomTask:InputMapping body
 for index, input in enumerate(input_list):
-    wd_ct_im_dict['{}'.format(input.replace(" ", ""))] = "${workflow.input." + "{}".format(input.replace(" ", "")) + "}"
+    wd_ct_im_dict['{}'.format(ucsd.replace_non_alpha(input.replace(" ", "")))] = "${workflow.input." + "{}".format(ucsd.replace_non_alpha(input.replace(" ", ""))) + "}"
 
 # Set WorkflowDefinition:CustomTask:InputMapping body
 json_template[10]['Body']['Tasks'][7]['InputParameters'] = wd_ct_im_dict
 
 # Set Url to Execute Remote Workflow
-#print(ucsd.ico_web_executor_url_builder(workflow_name, input_list))
 json_template[-1]['Body']['Batch'][0]['Url'] = ucsd.ico_web_executor_url_builder(workflow_name, input_list)
 
 print('Exporting ICO Workflows and Tasks...')
