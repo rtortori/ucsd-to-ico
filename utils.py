@@ -74,6 +74,71 @@ class UCSDApi():
         response = requests.get('https://{0}/app/api/rest?formatType=json&opName=workflow:userAPIGetWorkflowOutputDefinition&opData={1}'.format(self.ucsd_ip,enc_query), verify=False, headers=self.headers)
         return json.dumps(json.loads(response.content), indent=4, sort_keys=True)
 
+    def render_input_body(self, input_def_list, input_list):
+        # Render Input Body for each entry of the input_list 
+        for index, input in enumerate(input_list):
+            td_id_body = {
+                "Default": {
+                "ObjectType": "workflow.DefaultValue"
+            },
+            "DisplayMeta": {
+                "InventorySelector": True,
+                "ObjectType": "workflow.DisplayMeta",
+                "WidgetType": "None"
+            },
+            "Label": "{}".format(self.replace_non_alpha(input)),
+            "Name": "{}".format(self.replace_non_alpha(input.replace(" ", ""))),
+            "ObjectType": "workflow.PrimitiveDataType",
+            "Properties": {
+                "Constraints": {
+                    "EnumList": [],
+                    "ObjectType": "workflow.Constraints"
+                },
+                "InventorySelector": [],
+                "ObjectType": "workflow.PrimitiveDataProperty",
+                "Type": "string"
+            },
+            "Required": True}
+            # Append each input body to the existing list of input bodies
+            input_def_list.append(td_id_body)
+
+        return input_def_list
+
+    def render_output_body(self, output_def_list, output_list):
+        # Render Output Body for each entry of the output_list
+        for index, output in enumerate(output_list):
+            wd_od_body = {
+            "Default":
+            {
+                "ObjectType": "workflow.DefaultValue"
+            },
+            "DisplayMeta":
+            {
+                "InventorySelector": True,
+                "ObjectType": "workflow.DisplayMeta",
+                "WidgetType": "None"
+            },
+            "Label": "{}".format(self.replace_non_alpha(output)),
+            "Name": "{}".format(self.replace_non_alpha(output.replace(" ", ""))),
+            "ObjectType": "workflow.PrimitiveDataType",
+            "Properties":
+            {
+                "Constraints":
+                {
+                    "EnumList":
+                    [],
+                    "ObjectType": "workflow.Constraints"
+                },
+                "InventorySelector":
+                [],
+                "ObjectType": "workflow.PrimitiveDataProperty",
+                "Type": "string"
+            }}
+            # Append each output body to the existing list of output bodies
+            output_def_list.append(wd_od_body)
+        
+        return output_def_list
+
 ''' Sample Workflow Execution Payload:
 {
   "param0": "Workflow Name",

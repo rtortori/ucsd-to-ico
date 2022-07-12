@@ -157,12 +157,16 @@ desc = "Invokes the {} Workflow from UCS Director".format(workflow_name)
 normalized_wf_name = ucsd.replace_non_alpha(workflow_name)
 normalized_wf_ref_name = ucsd.replace_non_alpha(workflow_name.replace(" ", ""))
 
-# Task Definition
+''' Update Task Definition '''
 json_template[9]['Body']['Label'] = normalized_wf_name
-json_template[9]['Body']['Name'] = ucsd.replace_non_alpha(workflow_name.replace(" ", ""))
+json_template[9]['Body']['Name'] = normalized_wf_ref_name
 json_template[9]['Body']['Description'] = desc
+# Load Existing Input Definitions List (Task Definition)
+td_id_list = json_template[9]['Body']['Properties']['InputDefinition']
+# Render Inputs (Task Definition)
+json_template[9]['Body']['Properties']['InputDefinition'] = ucsd.render_input_body(td_id_list, input_list)
 
-# Workflow Definition
+''' Update Workflow Definition '''
 json_template[10]['Body']['Label'] = normalized_wf_name
 json_template[10]['Body']['Name'] = normalized_wf_ref_name
 json_template[10]['Body']['Description'] = desc
@@ -173,128 +177,26 @@ json_template[10]['Body']['Tasks'][7]['Label'] = normalized_wf_name
 json_template[10]['Body']['Tasks'][7]['Name'] = normalized_wf_ref_name + "1"
 json_template[10]['Body']['Tasks'][7]['TaskDefinitionName'] = normalized_wf_ref_name
 json_template[10]['Body']['UiRenderingData']['Positions'][-1]['Name'] = normalized_wf_ref_name + "1"
-json_template[-1]['Body']['Description'] = desc
-json_template[-1]['Body']['Name'] = normalized_wf_name
-json_template[-1]['Body']['TaskDefinition']['Selector'] = "Name eq \"{}\" and Version eq 1".format(normalized_wf_ref_name)
-
-
-# Load TaskDefinition:InputDefinition List
-td_id_list = json_template[9]['Body']['Properties']['InputDefinition']
-
-# Create TaskDefinition:InputDefinition body
-for index, input in enumerate(input_list):
-    td_id_body = {
-        "Default": {
-		"ObjectType": "workflow.DefaultValue"
-	},
-	"DisplayMeta": {
-		"InventorySelector": True,
-		"ObjectType": "workflow.DisplayMeta",
-		"WidgetType": "None"
-	},
-	"Label": "{}".format(ucsd.replace_non_alpha(input)),
-	"Name": "{}".format(ucsd.replace_non_alpha(input.replace(" ", ""))),
-	"ObjectType": "workflow.PrimitiveDataType",
-	"Properties": {
-		"Constraints": {
-			"EnumList": [],
-			"ObjectType": "workflow.Constraints"
-		},
-		"InventorySelector": [],
-		"ObjectType": "workflow.PrimitiveDataProperty",
-		"Type": "string"
-	},
-	"Required": True}
-    td_id_list.append(td_id_body)
-
-# Set TaskDefinition:InputDefinition body
-json_template[9]['Body']['Properties']['InputDefinition'] = td_id_list
-
-# Load WorkflowDefinition:InputDefinition List
+# Load Existing Input Definitions List (Workflow Definition)
 wd_id_list = json_template[10]['Body']['InputDefinition']
-
-# Create WorkflowDefinition:InputDefinition body
-for index, input in enumerate(input_list):
-    wd_id_body = {
-    "Default":
-    {
-        "ObjectType": "workflow.DefaultValue"
-    },
-    "DisplayMeta":
-    {
-        "InventorySelector": True,
-        "ObjectType": "workflow.DisplayMeta",
-        "WidgetType": "None"
-    },
-    "Label": "{}".format(ucsd.replace_non_alpha(input)),
-    "Name": "{}".format(ucsd.replace_non_alpha(input.replace(" ", ""))),
-    "ObjectType": "workflow.PrimitiveDataType",
-    "Properties":
-    {
-        "Constraints":
-        {
-            "EnumList":
-            [],
-            "ObjectType": "workflow.Constraints"
-        },
-        "InventorySelector":
-        [],
-        "ObjectType": "workflow.PrimitiveDataProperty",
-        "Type": "string"
-    },
-    "Required": True}
-    wd_id_list.append(wd_id_body)
-
-# Set WorkflowDefinition:InputDefinition body
-json_template[10]['Body']['InputDefinition'] = wd_id_list
-
-# Load WorkflowDefinition:OutputDefinition List
+# Render Inputs (Workflow Definition)
+json_template[10]['Body']['InputDefinition'] = ucsd.render_input_body(wd_id_list, input_list)
+# Load Existing Output Definitions List (Workflow Definition)
 wd_od_list = json_template[10]['Body']['OutputDefinition']
+# Render Outputs (Workflow Definition)
+json_template[10]['Body']['OutputDefinition'] = ucsd.render_output_body(wd_od_list, output_list)
 
-# Create WorkflowDefinition:OutputDefinition body
-for index, output in enumerate(output_list):
-    wd_od_body = {
-    "Default":
-    {
-        "ObjectType": "workflow.DefaultValue"
-    },
-    "DisplayMeta":
-    {
-        "InventorySelector": True,
-        "ObjectType": "workflow.DisplayMeta",
-        "WidgetType": "None"
-    },
-    "Label": "{}".format(ucsd.replace_non_alpha(output)),
-    "Name": "{}".format(ucsd.replace_non_alpha(output.replace(" ", ""))),
-    "ObjectType": "workflow.PrimitiveDataType",
-    "Properties":
-    {
-        "Constraints":
-        {
-            "EnumList":
-            [],
-            "ObjectType": "workflow.Constraints"
-        },
-        "InventorySelector":
-        [],
-        "ObjectType": "workflow.PrimitiveDataProperty",
-        "Type": "string"
-    }}
-    wd_od_list.append(wd_od_body)  
-
-# Set WorkflowDefinition:OutputDefinition body
-json_template[10]['Body']['OutputDefinition'] = wd_od_list    
-
-# Load WorkflowDefinition:OutputParameters Dict
+# Load Output Parameters (Workflow Definition)
 wd_op_dict = json_template[10]['Body']['OutputParameters']
 
 # Create WorkflowDefinition:OutputParameters body
 for index, output in enumerate(output_list):
     wd_op_dict[ucsd.replace_non_alpha(output.replace(" ", ""))] = "${InvokeGenericWebApi3.output.Parameters." + ucsd.replace_non_alpha(output.replace(" ", "")) + "}"
 
-# Set WorkflowDefinition:OutputParameters body
+# Render Output Parameters (Workflow Definition)
 json_template[10]['Body']['OutputParameters'] = wd_op_dict
 
+# If the target workflow has no outputs, skip output creation on rendered ICO workflow
 if len(output_list) != 0:
     # Load WorkflowDefinition:CheckSRTask:ResponseParser List
     json_template[10]['Body']['Tasks'][6]['InputParameters']['ResponseParser'] = {}
@@ -311,7 +213,7 @@ if len(output_list) != 0:
             }
         )
 
-    # Set WorkflowDefinition:CheckSRTask:ResponseParser body
+    # Render WorkflowDefinition:CheckSRTask:ResponseParser Body
     json_template[10]['Body']['Tasks'][6]['InputParameters']['ResponseParser']['Parameters'] = wd_rp_list
 else: 
     print('No Outputs Retrieved, skipping Response Parser Generation')
@@ -320,13 +222,17 @@ else:
 # Load WorkflowDefinition:CustomTask:InputMapping List
 wd_ct_im_dict = json_template[10]['Body']['Tasks'][7]['InputParameters']
 
-# Create WorkflowDefinition:CustomTask:InputMapping body
+# Render WorkflowDefinition:CustomTask:InputMapping body
 for index, input in enumerate(input_list):
     wd_ct_im_dict['{}'.format(ucsd.replace_non_alpha(input.replace(" ", "")))] = "${workflow.input." + "{}".format(ucsd.replace_non_alpha(input.replace(" ", ""))) + "}"
 
 # Set WorkflowDefinition:CustomTask:InputMapping body
 json_template[10]['Body']['Tasks'][7]['InputParameters'] = wd_ct_im_dict
 
+''' Update Batch Executor Definition '''
+json_template[-1]['Body']['Description'] = desc
+json_template[-1]['Body']['Name'] = normalized_wf_name
+json_template[-1]['Body']['TaskDefinition']['Selector'] = "Name eq \"{}\" and Version eq 1".format(normalized_wf_ref_name)
 # Set Url to Execute Remote Workflow
 json_template[-1]['Body']['Batch'][0]['Url'] = ucsd.ico_web_executor_url_builder(workflow_name, input_list)
 
